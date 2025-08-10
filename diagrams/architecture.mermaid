@@ -6,7 +6,7 @@ graph TD
     end
 
     subgraph "Google Cloud Platform (GCP)"
-        subgraph "Path 1: Cloud Run (Flexible Deployment)"
+        subgraph "Path 1: Cloud Run (Flexible)"
             IAP[("🔐 Google IAP<br>(Identity-Aware Proxy)")]
 
             subgraph "Cloud Run Service: search-agent"
@@ -35,10 +35,10 @@ graph TD
     end
 
     %% --- User & Service Connections ---
-    User -- "1. Authenticates via browser" --> IAP
-    UserAgent -- "2. Gets OIDC Token" --> IAM
-    UserAgent -- "3. API call with signed JWT" --> IAP
-    UserAgent -- "Alt. Path: API Call" --> AE
+    User -- "Authenticates via browser" --> IAP
+    UserAgent -- "Gets OIDC Token" --> IAM
+    UserAgent -- "API call with signed JWT" --> IAP
+    UserAgent -- "API Call" --> AE
 
     %% --- Internal GCP Connections ---
     AgentLogic_CR -- "Calls LLM" --> VertexAI
