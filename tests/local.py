@@ -1,3 +1,7 @@
+"""Test for a local agent running with `adk web`."""
+
+# %% IMPORTS
+
 import requests
 
 # %% CONFIGS

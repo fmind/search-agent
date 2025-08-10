@@ -1,6 +1,6 @@
 # https://git-scm.com/docs/gitignore
 
-# Environs
+# Environ
 .env
 /.venv/
 

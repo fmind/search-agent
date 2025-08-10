@@ -1,3 +1,5 @@
+"""A simple search agent."""
+
 # %% IMPORTS
 
 from google.adk.agents import Agent
@@ -6,9 +8,10 @@ from google.adk.tools import google_search
 # %% AGENTS
 
 root_agent = Agent(
-   name="search_agent",
-   model="gemini-2.5-flash",
-   description="Agent to answer questions using Google Search.",
-   instruction="You are an expert researcher. You always stick to the facts.",
-   tools=[google_search]
+    name="search_agent",
+    model="gemini-2.5-flash",
+    description="Agent to answer questions using Google Search.",
+    instruction="You are an expert researcher. You always stick to the facts.",
+    # use the builtin google_search tool from ADK
+    tools=[google_search],
 )
