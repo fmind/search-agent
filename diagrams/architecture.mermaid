@@ -1,0 +1,57 @@
+graph TD
+    subgraph "Clients"
+        direction LR
+        User[/"👤 User<br>(Web Browser)"/]
+        UserAgent[/"🤖 User Agent / API Client<br>(Service Account)"/]
+    end
+
+    subgraph "Google Cloud Platform (GCP)"
+        subgraph "Path 1: Cloud Run (Flexible Deployment)"
+            IAP[("🔐 Google IAP<br>(Identity-Aware Proxy)")]
+
+            subgraph "Cloud Run Service: search-agent"
+                direction TB
+                CR_Web[("🌐 Web UI Endpoint")]
+                CR_API[("🔌 API / A2A Endpoint")]
+                ---
+                AgentLogic_CR["⚙️ Search Agent Logic<br>(ADK + Gemini)"]
+                CR_Web --> AgentLogic_CR
+                CR_API --> AgentLogic_CR
+            end
+
+            IAP --> CR_Web
+            IAP --> CR_API
+        end
+
+        subgraph "Path 2: Vertex AI Agent Engine (Managed API)"
+            AE["🔌 Agent Engine API Endpoint"]
+            ---
+            AgentLogic_AE["⚙️ Search Agent Logic<br>(ADK + Gemini)"]
+            AE --> AgentLogic_AE
+        end
+
+        IAM[("🔑 IAM<br>Identity & Access Management")]
+        VertexAI[("🧠 Vertex AI Services<br>(Gemini Model)")]
+    end
+
+    %% --- User & Service Connections ---
+    User -- "1. Authenticates via browser" --> IAP
+    UserAgent -- "2. Gets OIDC Token" --> IAM
+    UserAgent -- "3. API call with signed JWT" --> IAP
+    UserAgent -- "Alt. Path: API Call" --> AE
+
+    %% --- Internal GCP Connections ---
+    AgentLogic_CR -- "Calls LLM" --> VertexAI
+    AgentLogic_AE -- "Calls LLM" --> VertexAI
+
+    %% --- Security and Permissions ---
+    IAM -.->|Grants 'IAP-secured Web App User' role| IAP
+    IAM -.->|Grants 'Vertex AI User' role| AE
+
+    %% --- Styling ---
+    style User fill:#cde4ff,stroke:#333
+    style UserAgent fill:#cde4ff,stroke:#333
+    style IAP fill:#d4edda,stroke:#333
+    style IAM fill:#fff3cd,stroke:#333
+    style VertexAI fill:#f8d7da,stroke:#333
+    style AE fill:#e2e3e5,stroke:#333

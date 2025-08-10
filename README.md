@@ -7,6 +7,8 @@ This project provides a comprehensive example of how to build and deploy a secur
 
 It showcases a primary [`search agent`](search_agent/) and a test [`user agent`](user_agent/) to demonstrate secure [agent-to-agent (A2A) communication](https://google.github.io/adk-docs/a2a/intro/).
 
+![Search Agent Architecture](./diagrams/architecture.png)
+
 ## Prerequisites
 
 Before you begin, ensure you have the following tools installed:
