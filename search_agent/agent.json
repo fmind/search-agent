@@ -1,0 +1,24 @@
+{
+    "capabilities": {},
+    "defaultInputModes": [
+        "text/plain"
+    ],
+    "defaultOutputModes": [
+        "text/plain"
+    ],
+    "description": "A Simple Google Search Agent built with Google ADK for Google Cloud.",
+    "name": "search_agent",
+    "skills": [
+        {
+            "id": "google_search",
+            "name": "Google Search",
+            "description": "Run a Google Search Query",
+            "tags": [
+                "search",
+                "google"
+            ]
+        }
+    ],
+    "url": "http://localhost:8000/a2a/search_agent",
+    "version": "1.0.0"
+}
