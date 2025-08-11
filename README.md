@@ -7,7 +7,7 @@ This project provides a comprehensive example of how to build and deploy a secur
 
 It showcases a primary [`search agent`](search_agent/) and a test [`user agent`](user_agent/) to demonstrate secure [agent-to-agent (A2A) communication](https://google.github.io/adk-docs/a2a/intro/).
 
-You can learn more about the deployment of Agent in the Entreprise on the associated Medium article: [Deploying AI Agents in the Enterprise without Losing your Humanity using ADK and Google Cloud](https://fmind.medium.com/deploying-ai-agents-in-the-enterprise-using-adk-and-google-cloud-b49e7eda3b41).
+To learn more about the deployment of Agent in the Entreprise, check out the associated Medium article: [Deploying AI Agents in the Enterprise without Losing your Humanity using ADK and Google Cloud](https://fmind.medium.com/deploying-ai-agents-in-the-enterprise-using-adk-and-google-cloud-b49e7eda3b41).
 
 ![Search Agent Architecture](./diagrams/architecture.png)
 
